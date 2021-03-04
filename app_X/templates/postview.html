@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xplanet</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forum.css' %}">
+</head>
+    <body style="background-color: rgb(18, 18, 94);">
+    <div id="bodyBox">
+        <!-- NAV BAR -->
+        <div id="navBox">
+            <img src="{% static 'img/out6.png' %}" alt="Xplanet Icon">
+            <nav>
+                <ul>
+                    <li><a href="/xplanet" class="li">Home</a></li>
+                    <li><a href="/xplanet/dashboard" class="li">Dashboard</a></li>
+                    <li><a href="/xplanet/humans" class="li">Humans</a></li>
+                    <li><a href="/xplanet/forum" style="color: rgb(21, 255, 0);">Forums</a></li>
+                    <li><a href="/xplanet/news" class="li">News</a></li>
+                    <li><a href="/xplanet/settings" class="li">Settings</a></li>
+                    <li>|</li>
+                    <li><a href="/Logout" class="li">Log Out</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- SIDE BAR -->
+        <div class="uibase">
+            <div id="sideBox">
+                <div class="following">
+                    <h2 style="margin-bottom: 20px;">Humans You Follow:</h2>
+                    <div class="followList">
+                        <ul>
+                            {% if Following %}
+                                {% for human in Following %}
+                                    <div class="fghead" style="display: flex;">
+                                        {% if human.image %}
+                                            <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                        {% endif %}
+                                        <li><a class="folg" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a></li>
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="followers">
+                    <h2 style="margin-bottom: 20px;">Following Humans:</h2>
+                    <div class="followList">
+                        <ul>
+                            {% if Followers %}
+                                {% for human in Followers %}
+                                    <div class="frhead" style="display: flex;">
+                                        {% if human.image %}
+                                            <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                        {% endif %}
+                                        <li><a class="fol" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a></li>
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <marquee behavior="scroll" direction="left" scrollamount="9"><img src="{% static 'img/DOOM.jpg' %}"></marquee>
+                <marquee behavior="scroll" direction="right" scrollamount="9"><img src="{% static 'img/fadd02.jpg' %}"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="6"><img src="{% static 'img/fortnite.jpg' %}"></marquee>
+                <marquee behavior="scroll" direction="right" scrollamount="15"><img src="{% static 'img/X1.png' %}"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="15"><img src="{% static 'img/halo.jpeg' %}"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="9"><img src="{% static 'img/fadd01.jpg' %}"></marquee>
+                <marquee behavior="scroll" direction="right" scrollamount="9"><img src="{% static 'img/pokemonsh.jpg' %}"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="6"><img src="{% static 'img/fadd03.jpg' %}"></marquee>
+                <marquee behavior="scroll" direction="right" scrollamount="15"><img src="{% static 'img/spiderman.jpg' %}"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="15"><img src="{% static 'img/X1.png' %}"></marquee>
+            </div>
+            <!-- CONTENT -->
+            <div id="contentBox">
+                <h1 style="margin-bottom: 20px; text-shadow: 0px 0px 10px rgb(0, 102, 255);">Xplanet's Forum: Post View</h1>
+                <div class="post">
+                    {% if Post.profile.id == User.id %}
+                        <form action="/xplanet/editpost" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="ekey" value="{{ Post.id }}">
+                            <input type="text" name="title" id="title" value="{{ Post.title }}"><br>
+                            <textarea name="post" id="fpost" cols="30" rows="10">{{ Post.post }}</textarea><br>
+                            <br><button type="submit">Update Post</button>
+                        </form>
+                        <form action="/xplanet/delete" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="delkey" value="{{ Post.id }}">
+                            <button type="submit" class="delete">Delete Post</button>
+                        </form><br>
+                        {% if messages %}
+                            <ul>
+                            {% for message in messages %}
+                                <li style="color: red; background-color: rgb(172, 172, 172); margin-left: 30px;">{{ message }}</li>
+                            {% endfor %}
+                            </ul><br>
+                        {% endif %}
+                    {% else %}
+                        <div class="Phead">
+                            <h2>{{ Post.title }} - 
+                                    {% if Post.profile in Following %}
+                                        <span class="folg">{{ Post.profile.name }}</span>
+                                    {% else %}
+                                        <span style="font-size: 15px;">{{ Post.profile.name }}</span>
+                                    {% endif %}
+                                | <span style="font-size: 15px;">{{ Post.created_at }}</span>
+                            </h2>
+                        </div>
+                        <div class="Ptails">
+                            <p>{{ Post.post }}</p>
+                        </div>
+                    {% endif %}
+                    {% if post.liked.all.count == 0 %}
+                        <div class="dis">
+                            <p>LIKES: {{ post.liked.all.count }}</p>
+                        </div>
+                    {% else %}
+                    <div class="likes">
+                        <p>LIKES: {{ Post.liked.all.count }}</p>
+                    </div>
+                        {% if User not in Post.liked.all %}
+                            <form action="/xplanet/like" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="jugkey" value="{{ Post.id }}">
+                                <button type="submit" class="like">Like Post</button>
+                            </form>
+                        {% else %}
+                            <form action="/xplanet/dislike" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="jugkey" value="{{ Post.id }}">
+                                <button type="submit" class="dislike">Dislike Post</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                    {% if Post.comments.all %}
+                        <div class="comment">
+                        {% for comment in Post.comments.all %}
+                            <div class="comboard">
+                                <div class="Chead">
+                                    <h3>{{ comment.profile.name }} | {{ comment.created_at }}</h3>
+                                </div>
+                                <div class="Ctails">
+                                    <p>{{ comment.comment }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="nocomment">
+                            <div class="Chead">
+                                <h3>No one has Commented on this Post yet!</h3>
+                            </div>
+                        </div>
+                    {% endif %}
+                        <form action="/xplanet/comment" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="comkey" value="{{ Post.id }}">
+                        <textarea name="comment" id="fcomment" cols="30" rows="10" placeholder="Comment on Post Here!"></textarea><br>
+                        <br><button class="button" type="submit">Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footBox">
+        <footer><marquee behavior="scroll" direction="left">(O <_ O) {{ User.name }} is Currently Logged In to XPLANET Welcome Human! (O _> O)</marquee></footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged In/ Registered</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'success.css' %}">
+</head>
+<body style="background-color: rgb(18, 18, 94);">
+    <!-- NAV BAR -->
+    <div id="navBox">
+        <img src="{% static 'img/out6.png' %}" alt="Xplanet Icon">
+        <nav>
+            <ul>
+                <li><a href="/xplanet" class="li">Home</a></li>
+                <li><a href="#" style="color: red;">Dashboard</a></li>
+                <li><a href="#" style="color: red;">Humans</a></li>
+                <li><a href="#" style="color: red;">Forums</a></li>
+                <li><a href="#" style="color: red;">News</a></li>
+                <li><a href="#" style="color: red;">Settings</a></li>
+                <li>|</li>
+                <li><a href="#" style="color: red;">Log In</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- CONTENT -->
+    <div id="contentBox">
+        <div id="post">
+            <div class="Ptails">
+                <h1>Hey {{ User.user.first_name }}, Welcome to Xplanet!</h1>
+                <p>You have Successfully {{ status }}!</p>
+            </div>
+            <br>
+            <div class="Ctails">
+                <h3>Please Create a User Name for Your profile!</h3>
+                <p>(Default name for everyone is "New comer")</p>
+            </div>
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li style="color: red; background-color: rgb(172, 172, 172); margin-left: 30px;">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <form action="/Profile_name" method="POST">
+                {% csrf_token %}
+                <input id="sign" type="text" name="proname" placeholder="Please Enter Your New Profile Name Here!">
+                <button type="submit">New Name</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

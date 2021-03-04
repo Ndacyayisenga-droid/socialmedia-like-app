@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xplanet</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+</head>
+    <body style="background-color: rgb(18, 18, 94);">
+    <div id="bodyBox">
+        <!-- NAV BAR -->
+        <div id="navBox">
+            <img src="{% static 'img/out6.png' %}" alt="Xplanet Icon">
+            <nav>
+                <ul>
+                    <li><a href="/xplanet" style="color: rgb(0, 255, 0);">Home</a></li>
+                    <li><a href="" style="color: red;">Dashboard</a></li>
+                    <li><a href="" style="color: red;">Humans</a></li>
+                    <li><a href="" style="color: red;">Forums</a></li>
+                    <li><a href="" style="color: red;">News</a></li>
+                    <li><a href="" style="color: red;">Settings</a></li>
+                    <li>|</li>
+                    <li><a href="/" class="li">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- SIDE BAR -->
+        <div class="uibase">
+            <div id="sideBox">
+                <div class="following">
+                    <h2>Sign In and you can Follow other Humans!</h2>
+                </div>
+                <div class="followers">
+                    <h2>Also Sign In so other Humans can Follow You!</h2>
+                </div>
+            </div>
+            <!-- CONTENT -->
+            <div id="contentBox">
+                <div class="Phead">
+                    <h1>Hello Human!</h1><br>
+                    <h2>Sorry! You have to Register or Login to get access to the rest of the site!</h2><br>
+                    <h3>Non-Registered Humans can only access the "Home!"</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footBox">
+        <footer><marquee behavior="scroll" direction="left">(O <_ O) Welcome to XPLANET Human! Please Register or login To get access to the rest of the site! (O _> O)</marquee></footer>
+    </div>
+</body>
+</html>

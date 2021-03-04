@@ -1,0 +1,107 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Nav Box */
+#navBox{
+    background-image: linear-gradient(0deg, rgb(80, 80, 80), rgb(56, 56, 56), rgb(80, 80, 80));
+    /* background-color: rgb(28, 167, 40); */
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid gray;
+}
+nav{
+    width: 50%;
+    font-size: 20px;
+    padding-top: 40px;
+    margin-right: 5%;
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+nav ul li a{
+    text-decoration: none;
+}
+.li{
+    color: rgb(228, 230, 255);
+}
+
+#Box{
+    padding: 30px;
+    box-shadow: 0px 0px 5px 1px rgb(78, 78, 78);
+    width: 80%;
+    margin: 20px auto;
+}
+
+#contentBox{
+    background-image: linear-gradient(40deg, rgb(58, 58, 58), gray, rgb(58, 58, 58));
+    width: 70%;
+    margin-right: 1%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+#sign{
+    padding: 10px;
+    width: 500px;
+    height: 25px;
+    margin-bottom: 20px;
+}
+#post{
+    min-height: 200px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 4px black;
+    background-color: rgb(172, 172, 172);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+.Ptails{
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 30px;
+    border-left: 4px solid rgb(0, 4, 211);
+}
+.Ctails{
+    min-height: 50px;
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 30px;
+    border-left: 4px solid cyan;
+}
+
+button {
+    margin-top: 20px;
+    margin-left: 600px;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: rgb(122, 122, 122);
+    background-color: rgb(212, 212, 212);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 6px 6px 1px rgb(77, 77, 77);
+}
+
+button:hover {
+    background-color: blue;
+}
+
+button:active {
+    color: darkblue;
+    background-color: cyan;
+    box-shadow: 0px 3px 3px 0px gray;
+    transform: translateY(4px);
+}

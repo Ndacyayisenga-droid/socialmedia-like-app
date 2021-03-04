@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xplanet</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+</head>
+    <body style="background-color: rgb(18, 18, 94);">
+    <div id="bodyBox">
+        <!-- NAV BAR -->
+        <div id="navBox">
+            <img src="{% static 'img/out6.png' %}" alt="Xplanet Icon">
+            <nav>
+                <ul>
+                    <li><a href="/xplanet" class="li">Home</a></li>
+                    <li><a href="/xplanet/dashboard" class="li">Dashboard</a></li>
+                    <li><a href="#" style="color: cyan;">Humans</a></li>
+                    <li><a href="/xplanet/forum" class="li">Forums</a></li>
+                    <li><a href="/xplanet/news" class="li">News</a></li>
+                    <li><a href="/xplanet/settings" class="li">Settings</a></li>
+                    <li>|</li>
+                    <li><a href="/Logout" class="li">Log Out</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- SIDE BAR -->
+        <div class="uibase">
+            <div id="sideBox">
+                <br><marquee behavior="scroll" direction="left" scrollamount="13"><img src="{% static 'img/X.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="11"><img src="{% static 'img/p.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="1"><img src="{% static 'img/l.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="7"><img src="{% static 'img/a.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="5"><img src="{% static 'img/n.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="9"><img src="{% static 'img/e.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="3"><img src="{% static 'img/t.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="13"><img src="{% static 'img/X.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="11"><img src="{% static 'img/p.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="1"><img src="{% static 'img/l.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="7"><img src="{% static 'img/a.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="5"><img src="{% static 'img/n.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="9"><img src="{% static 'img/e.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="3"><img src="{% static 'img/t.png' %}"></marquee><br>
+            </div>
+            <!-- CONTENT -->
+            <div id="contentBox">
+                <div class="following">
+                    <h2 style="margin-bottom: 20px;">All Humans On XPLANET:</h2>
+                    <div class="humanList">
+                        <ul>
+                            {% if All %}
+                                {% for human in All %}
+                                    {% if User not in human.followers.all %}
+                                        {% if human.id != User.id %}
+                                            <div style="display: flex;">
+                                                {% if human.image %}
+                                                    <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                                {% endif %}
+                                                <li><a class="nofol" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a> | <a href="/xplanet/follow/{{human.id}}">Follow</a></li>
+                                            </div><br>
+                                        {% endif %}
+                                    {% else %}
+                                        <div style="display: flex;">
+                                            {% if human.image %}
+                                                <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 75px; max-height: 75px; margin-right: 20px;"><br>
+                                            {% endif %}
+                                            <li><a class="fol" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a> | <a href="/xplanet/unfollow/{{human.id}}">Un-Follow</a></li>
+                                        </div><br>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="following">
+                    <h2 style="margin-bottom: 20px;">Humans You Follow:</h2>
+                    <div class="followList">
+                        <ul>
+                            {% if Following %}
+                                {% for human in Following %}
+                                    <div class="fghead" style="display: flex;">
+                                        {% if human.image %}
+                                            <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                        {% endif %}
+                                        <li><a class="folg" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a></li>
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="followers">
+                    <h2 style="margin-bottom: 20px;">Following Humans:</h2>
+                    <div class="followList">
+                        <ul>
+                            {% if Followers %}
+                                {% for human in Followers %}
+                                    <div class="frhead" style="display: flex;">
+                                        {% if human.image %}
+                                            <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                        {% endif %}
+                                        <li><a class="fol" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a></li>
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footBox">
+        <footer><marquee behavior="scroll" direction="left">(O <_ O) {{ User.name }} is Currently Logged In to XPLANET Welcome Human! (O _> O)</marquee></footer>
+    </div>
+</body>
+</html>

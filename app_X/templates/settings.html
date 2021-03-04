@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xplanet</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+</head>
+    <body style="background-color: rgb(18, 18, 94);">
+    <div id="bodyBox">
+        <!-- NAV BAR -->
+        <div id="navBox">
+            <img src="{% static 'img/out6.png' %}" alt="Xplanet Icon">
+            <nav>
+                <ul>
+                    <li><a href="/xplanet" class="li">Home</a></li>
+                    <li><a href="/xplanet/dashboard" class="li">Dashboard</a></li>
+                    <li><a href="/xplanet/humans" class="li">Humans</a></li>
+                    <li><a href="/xplanet/forum" class="li">Forums</a></li>
+                    <li><a href="/xplanet/news" class="li">News</a></li>
+                    <li><a href="#" style="color: cyan;">Settings</a></li>
+                    <li>|</li>
+                    <li><a href="/Logout" class="li">Log Out</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- SIDE BAR -->
+        <div class="uibase">
+            <div id="sideBox">
+                <div class="following">
+                    <h2 style="margin-bottom: 20px;">Humans You Follow:</h2>
+                    <div class="followList">
+                        <ul>
+                            {% if Following %}
+                                {% for human in Following %}
+                                    <div class="fghead" style="display: flex;">
+                                        {% if human.image %}
+                                            <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                        {% endif %}
+                                        <li><a class="folg" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a></li>
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="followers">
+                    <h2 style="margin-bottom: 20px;">Following Humans:</h2>
+                    <div class="followList">
+                        <ul>
+                            {% if Followers %}
+                                {% for human in Followers %}
+                                    <div class="frhead" style="display: flex;">
+                                        {% if human.image %}
+                                            <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                        {% endif %}
+                                        <li><a class="fol" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a></li>
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <br><marquee behavior="scroll" direction="left" scrollamount="13"><img src="{% static 'img/X.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="11"><img src="{% static 'img/p.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="1"><img src="{% static 'img/l.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="7"><img src="{% static 'img/a.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="5"><img src="{% static 'img/n.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="9"><img src="{% static 'img/e.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="3"><img src="{% static 'img/t.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="13"><img src="{% static 'img/X.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="11"><img src="{% static 'img/p.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="1"><img src="{% static 'img/l.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="7"><img src="{% static 'img/a.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="5"><img src="{% static 'img/n.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="left" scrollamount="9"><img src="{% static 'img/e.png' %}"></marquee><br>
+                <br><marquee behavior="scroll" direction="right" scrollamount="3"><img src="{% static 'img/t.png' %}"></marquee><br>
+            </div>
+            <!-- CONTENT -->
+            <div id="contentBox">
+                <div class="userfo">
+                    <div class="Phead">
+                        <h1 style="margin-bottom: 20px;">Profile</h1>
+                        {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <li style="color: red; background-color: rgb(172, 172, 172); margin-left: 30px;">{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <form action="/xplanet/update" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="Chead">
+                            {% if User.image %}
+                            <img src="{{ User.image.url }}" alt="Your Profile Pic Here" style="width: 300px; max-height: 300px;"><br>
+                            {% endif %}
+                            <br><h3>Upload a Profile Picture</h3>
+                            <input type="file" name="image" id="image">
+                        </div>
+                        <div class="Chead">
+                            <h3 style="margin-bottom: 30px;">Current User Name: {{ User.name }}</h3>
+                            <input id="sign" type="text" name="name" id="name" value="{{ User.name }}" required>
+                        </div>
+                        <div class="Chead">
+                            <h3>Bio:</h3>
+                            <textarea id="fpost" name="bio" id="bio" cols="30" rows="10" required>{{ User.bio }}</textarea>
+                        </div>
+                        <button class="button" type="submit">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footBox">
+        <footer><marquee behavior="scroll" direction="left">(O <_ O) {{ User.name }} is Currently Logged In to XPLANET Welcome Human! (O _> O)</marquee></footer>
+    </div>
+</body>
+</html>

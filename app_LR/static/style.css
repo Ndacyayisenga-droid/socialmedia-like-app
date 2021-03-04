@@ -1,0 +1,151 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*Body Box */
+#Box{
+    padding: 30px;
+    width: 80%;
+    height: 400px;
+    margin: 0px auto;
+}
+
+
+/* Nav Box */
+#navBox{
+    background-image: linear-gradient(0deg, rgb(80, 80, 80), rgb(56, 56, 56), rgb(80, 80, 80));
+    /* background-color: rgb(28, 167, 40); */
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid gray;
+}
+nav{
+    width: 50%;
+    font-size: 20px;
+    padding-top: 40px;
+    margin-right: 5%;
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+nav ul li a{
+    text-decoration: none;
+}
+.li{
+    color: rgb(228, 230, 255);
+}
+
+/* Register Box */
+.regBox{
+    text-align: center;
+    /* border: 1px solid black; */
+    width: 50%;
+}
+#contentBox{
+    background-image: linear-gradient(40deg, rgb(58, 58, 58), gray, rgb(58, 58, 58));
+    width: 70%;
+    margin-right: 1%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+#sign{
+    padding: 10px;
+    width: 500px;
+    height: 25px;
+    margin-bottom: 20px;
+}
+
+/* Login Box */
+.logBox{
+    text-align: center;
+    /* border: 1px solid black; */
+    width: 50%;
+}
+
+h1{
+    margin: 10px;
+}
+input{
+    margin: 10px;
+    height: 20px;
+    width: 80%;
+}
+button {
+    margin-top: 20px;
+    margin-left: 600px;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: rgb(122, 122, 122);
+    background-color: rgb(212, 212, 212);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 6px 6px 1px rgb(77, 77, 77);
+}
+
+button:hover {
+    background-color: blue;
+}
+
+button:active {
+    color: darkblue;
+    background-color: cyan;
+    box-shadow: 0px 3px 3px 0px gray;
+    transform: translateY(4px);
+}
+
+.Phead{
+    display: inline-block;
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 15px;
+    border-left: 4px solid rgb(0, 4, 211);
+}
+
+#bio{
+    padding: 10px;
+    width: 880px;
+}
+
+.delete {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 745px;
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: rgb(122, 122, 122);
+    background-color: rgb(212, 212, 212);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 6px 6px 1px rgb(77, 77, 77);
+}
+
+.delete:hover {
+    background-color: red;
+}
+
+.delete:active {
+    color: darkred;
+    background-color: cyan;
+    box-shadow: 0px 3px 3px 0px gray;
+    transform: translateY(4px);
+}

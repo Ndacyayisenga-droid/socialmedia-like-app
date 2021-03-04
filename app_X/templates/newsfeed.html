@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xplanet</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/wisewelcome.css' %}">
+</head>
+    <body style="background-color: rgb(18, 18, 94);">
+    <div id="bodyBox">
+        <!-- NAV BAR -->
+        <div id="navBox">
+            <img src="{% static 'img/out6.png' %}" alt="Xplanet Icon">
+            <nav>
+                <ul>
+                    <li><a href=""/xplanet" class="li">Home</a></li>
+                    <li><a href="/xplanet/dashboard" class="li">Dashboard</a></li>
+                    <li><a href="/xplanet/humans" class="li">Humans</a></li>
+                    <li><a href="/xplanet/forum" class="li">Forums</a></li>
+                    <li><a href="#" style="color: cyan;">News</a></li>
+                    <li><a href="/xplanet/settings" class="li">Settings</a></li>
+                    <li>|</li>
+                    {% if User %}
+                        <li><a href="/Logout" class="li">Log Out</a></li>
+                    {% else %}
+                        <li><a href="/log" class="li">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <!-- SIDE BAR -->
+        <div class="uibase">
+            <div id="sideBox">
+                <div class="following">
+                    <h2 style="margin-bottom: 20px;">Humans You Follow:</h2>
+                    <div class="followList">
+                        <ul>
+                            {% if Following %}
+                                {% for human in Following %}
+                                    <div class="fghead" style="display: flex;">
+                                        {% if human.image %}
+                                            <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                        {% endif %}
+                                        <li><a class="folg" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a></li>
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="followers">
+                    <h2 style="margin-bottom: 20px;">Following Humans:</h2>
+                    <div class="followList">
+                        <ul>
+                            {% if Followers %}
+                                {% for human in Followers %}
+                                    <div class="frhead" style="display: flex;">
+                                        {% if human.image %}
+                                            <img src="{{ human.image.url }}" alt="Profile Pic of who your following" style="width: 50px; max-height: 50px; margin-right: 20px;"><br>
+                                        {% endif %}
+                                        <li><a class="fol" href="/xplanet/viewhuman/{{ human.name }}">{{ human.name }}</a></li>
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <li>No humans here!</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <marquee behavior="scroll" direction="left" scrollamount="9"><img src="{% static 'img/spiderman.jpg' %}" alt="New Among Us Map Picture"></marquee>
+                <marquee behavior="scroll" direction="right" scrollamount="9"><img src="{% static 'img/halo.jpeg' %}" alt="New Among Us Map Picture"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="6"><img src="{% static 'img/Spellbreak.jpg' %}" alt="New Among Us Map Picture"></marquee>
+                <marquee behavior="scroll" direction="right" scrollamount="15"><img src="{% static 'img/X1.png' %}" alt="New Among Us Map Picture"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="15"><img src="{% static 'img/X1.png' %}" alt="New Among Us Map Picture"></marquee>
+            </div>
+            <!-- CONTENT -->
+            <div id="contentBox">
+                <section id="news">
+                    <h1>Recent News:</h1><br>
+                    <h3>Bungie nerfs Stasis Warlock and promises to add more guns to Destiny 2: Beyond Light</h3>
+                    <div class="news">
+                        <img src="{% static 'img/destiny-2-warlock.jpg' %}" alt="Destiny 2 Stasis Warlock">
+                        <div class="Ptails">
+                            <p>The Destiny 2: Beyond Light expansion went live earlier this week with the big addition of a new elemental power, Stasis, that enables players to slow, freeze, and shatter enemies. It very quickly became clear that it was working a little too well for the new for the new Shadebinder Warlock, though, and by "a little" I mean a lot, and by "a lot" I mean, as Bungie put it in its latest weekly update, "we mean insanely huge."</p>
+                        </div>
+                    </div>
+                    <h3>Gaming company Roblox files IPO prospectus after 91% jump in revenue</h3>
+                    <div class="news">
+                        <img src="{% static 'img/Roblox.jpg' %}" alt="Roblox CEO David Baszucki">
+                        <div class="Ptails">
+                            <p>Roblox said third-quarter revenue climbed 91% to $242.2 million</p><br>
+                            <p>The company’s net loss more than doubled to $48 million.</p><br>
+                            <p>Roblox’s prospectus hit investors’ hands two months after gaming company Unity went public. Roblox is bigger and growing faster.</p>
+                        </div>
+                    </div>
+                    <h3>Among Us developer teases new map for next month</h3>
+                    <div class="news">
+                        <img src="{% static 'img/Among_Us.jpg' %}" alt="New Among Us Map Picture">
+                        <div class="Ptails">
+                            <p>Among Us developer InnerSloth has used the first post from a newly established Twitter account for the game to tease a new map. “Here’s a special look at the new Among Us map,” the developer tweeted, before hinting that more information would be revealed during The Game Awards on December 10th. Among Us is nominated for two awards at this year’s show, “Best Multiplayer,” and “Best Mobile Game.”</p>
+                        </div>
+                    </div>
+                    <h3>The PlayStation 5 and Xbox Series X have been super hard to find. That may be on purpose</h3>
+                    <div class="news">
+                        <img src="{% static 'img/PSX.jpg' %}" alt="A PlayStation and Xbox Controller">
+                        <div class="Ptails">
+                            <p>Customers reported having a difficult time finding the consoles in stock as websites kept crashing. To many, it felt harder this year than usual to get their hands on the latest release.</p>
+                        </div>
+                    </div>
+                    <h3>Nvidia is bringing Fortnite back to iOS with new cloud gaming web app</h3>
+                    <div class="news">
+                        <img src="{% static 'img/GeForce.jpg' %}" alt="Nvidia GeForce">
+                        <div class="Ptails">
+                            <p>Nvidia is joining its fellow cloud gaming providers in choosing to bypass Apple’s App Store and launching a mobile web app version of its GeForce Now service. Nvidia’s version is available today in beta form, meaning any of the service’s more than 5 million registered users can fire up GeForce Now in mobile Safari on an iPhone or iPad and get playing.</p>
+                        </div>
+                    </div>
+                    <h3>The new ‘Call of Duty’ demonstrates what makes video games art</h3>
+                    <div class="news">
+                        <img src="{% static 'img/codCW.jpg' %}" alt="Nvidia GeForce">
+                        <div class="Ptails">
+                            <p>I’m someone who would be classified as a casual gamer, at best, so it takes a lot to get me to carve out the time to play a video game all the way through. But when the Verge reported “Ronald Reagan sends [us] to do war crimes in the latest ‘Call of Duty,’” I knew it was time to dust off the ol’ DualShock controller and dive back in. After all, playing a video game for a column so I could write it off on my taxes is just what the Gipper would have wanted.</p>
+                        </div>
+                    </div>
+                    <h3>Black Friday Playstation Deals 2020: Early Sony PS5, PS4 Pro & PS4 Slim Bundle Sales Monitored by Consumer Walk</h3>
+                    <div class="news">
+                        <img src="{% static 'img/black.png' %}" alt="Nvidia GeForce">
+                        <div class="Ptails">
+                            <p>Save on a wide range of Playstation console deals at the early Black Friday sale, including the top PS4 Pro & Slim and PS5 Standard & Digital edition sales! Searching for more deals? Check out Walmart’s Black Friday sale and Amazon’s latest Black Friday-worthy deals to enjoy more offers available now. Consumer Walk earns commissions from purchases made using the links provided.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div id="footBox">
+        {% if User %}
+            <footer><marquee behavior="scroll" direction="left">(O <_ O) {{ User.name }} is Currently Logged In to XPLANET Welcome Human! (O _> O)</marquee></footer>
+        {% else %}
+            <footer><marquee behavior="scroll" direction="left">(O <_ O) ({{ No_user }}) Welcome to XPLANET Human! (O _> O)</marquee></footer>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xplanet</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/wisewelcome.css' %}">
+</head>
+    <body style="background-color: rgb(18, 18, 94);">
+    <div id="bodyBox">
+        <!-- NAV BAR -->
+        <div id="navBox">
+            <img src="{% static 'img/out6.png' %}" alt="Xplanet Icon">
+            <nav>
+                <ul>
+                    <li><a href="#" style="color: cyan;">Home</a></li>
+                    <li><a href="/xplanet/dashboard" class="li">Dashboard</a></li>
+                    <li><a href="/xplanet/humans" class="li">Humans</a></li>
+                    <li><a href="/xplanet/forum" class="li">Forums</a></li>
+                    <li><a href="/xplanet/news" class="li">News</a></li>
+                    <li><a href="/xplanet/settings" class="li">Settings</a></li>
+                    <li>|</li>
+                    {% if User %}
+                        <li><a href="/Logout" class="li">Log Out</a></li>
+                    {% else %}
+                        <li><a href="/" class="li">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <!-- SIDE BAR -->
+        <div class="uibase">
+            <div id="sideBox">
+                <div class="following">
+                    <h2>Sign Up and you can Follow other Humans!</h2>
+                </div>
+                <div class="followers">
+                    <h2>Also Sign In so other Humans can Follow You!</h2>
+                </div>
+                <marquee behavior="scroll" direction="left" scrollamount="9"><img src="{% static 'img/fadd01.jpg' %}" alt="New Among Us Map Picture"></marquee>
+                <marquee behavior="scroll" direction="right" scrollamount="9"><img src="{% static 'img/fadd02.jpg' %}" alt="New Among Us Map Picture"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="6"><img src="{% static 'img/fadd03.jpg' %}" alt="New Among Us Map Picture"></marquee>
+                <marquee behavior="scroll" direction="right" scrollamount="15"><img src="{% static 'img/X1.png' %}" alt="New Among Us Map Picture"></marquee>
+                <marquee behavior="scroll" direction="left" scrollamount="15"><img src="{% static 'img/X1.png' %}" alt="New Among Us Map Picture"></marquee>
+            </div>
+            <!-- CONTENT -->
+            <div id="contentBox">
+                <div class="userfo">
+                    <h1>Hello Human!</h1><br>
+                    <h2>Welcome to Xplanet</h2><br>
+                    <div class="Ptails">
+                        <p>This is a Social gaming site that is dedicated to connecting Gamers around the world to increase your gaming experience, "You never have to go solo."</p>
+                        <p>Also here at <strong>Xplanet</strong> we do our best to keep you entertained and as well as keep you up to date on the latest news in gaming and keeping you informed of the lore of tending Game stories</p>
+                    </div>
+                    <br><div class="quicklinks">
+                        <ul>
+                            <li>About Xplanet:</li>
+                            <li><a href="#become">Become a User</a></li>
+                            <li><a href="#types">Types of games we cover</a></li>
+                            <li><a href="#news">Recent News</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="uposts">
+                    <section id="become">
+                        <h1>Become a User!</h1><br>
+                        <div class="Phead">
+                            <p>Sign up now! Become a user and get access to everything that <strong>Xplanet</strong> offers.</p>
+                            <p><strong>Xplanet</strong> offers a Gamer-topia, where Gamers from all Systems can come together.</p>
+                        </div>
+                        <div class="Ptails">
+                            <p><strong>Xplanet</strong> provides many features to meet this criteria, such as: </p>
+                            <ul style="margin-left: 20px;">
+                                <li>Monitoring your activity or see another user's interest</li>
+                                <li>See a list of users from the site and suggestions that share your interest</li>
+                                <li>Latest Updates in the gaming world</li>
+                                <li>User Forum & Messaging</li>
+                                <li>And More...</li>
+                            </ul><br>
+                            <p>Register <a href="/">Now!</a></p>
+                        </div>
+                    </section>
+                    <section id="types">
+                        <h1>Types of Games We Cover & More!</h1><br>
+                        <h3>First Person Shooters</h3>
+                        <div class="games">
+                            <img src="{% static 'img/CODWarzone.jpg' %}" alt="COD Warzone">
+                            <img src="{% static 'img/Destiny2.jpg' %}" alt="Destiny 2">
+                            <img src="{% static 'img/DOOM.jpg' %}" alt="DOOM Eternal">
+                        </div>
+                        <h3>Third Person Shooters</h3>
+                        <div class="games">
+                            <img src="{% static 'img/Fortnite.jpg' %}" alt="Fortnite">
+                            <img src="{% static 'img/Division2.png' %}" alt="Tom Clanncy's The Division 2">
+                            <img src="{% static 'img/Spellbreak.jpg' %}" alt="Spellbreak">
+                        </div>
+                        <h3>Dungeon Crawlers</h3>
+                        <div class="games">
+                            <img src="{% static 'img/Minecraft.png' %}" alt="Minecraft Dungeons">
+                            <img src="{% static 'img/Torchlight3.jpg' %}" alt="Torchlight 3">
+                            <img src="{% static 'img/Dead_Gods.jpg' %}" alt="Curse of The Dead Gods">
+                        </div>
+                        <h3>Role Playing Games</h3>
+                        <div class="games">
+                            <img src="{% static 'img/Cyberpunk.jpg' %}" alt="Cyberpunk 2077">
+                            <img src="{% static 'img/Immortals.jpg' %}" alt="Immortals Fenyx Rising">
+                            <img src="{% static 'img/Nioh2.png' %}" alt="Nioh 2">
+                        </div>
+                        <h3>Strategy</h3>
+                        <div class="games">
+                            <img src="{% static 'img/Gears_Tactics.jpg' %}" alt="Gears Tactics">
+                            <img src="{% static 'img/CrusaderKings3.jpg' %}" alt="Crusader Kings 3">
+                            <img src="{% static 'img/Phantom_Brigade.jpeg' %}" alt="Phantom Brigade">
+                        </div>
+                    </section>
+                    <section id="news">
+                        <h1>Recent News:</h1><br>
+                        <h3>Bungie nerfs Stasis Warlock and promises to add more guns to Destiny 2: Beyond Light</h3>
+                        <div class="news">
+                            <img src="{% static 'img/destiny-2-warlock.jpg' %}" alt="Destiny 2 Stasis Warlock">
+                            <div class="Ptails">
+                                <p>The Destiny 2: Beyond Light expansion went live earlier this week with the big addition of a new elemental power, Stasis, that enables players to slow, freeze, and shatter enemies. It very quickly became clear that it was working a little too well for the new for the new Shadebinder Warlock, though, and by "a little" I mean a lot, and by "a lot" I mean, as Bungie put it in its latest weekly update, "we mean insanely huge."</p>
+                            </div>
+                        </div>
+                        <h3>Gaming company Roblox files IPO prospectus after 91% jump in revenue</h3>
+                        <div class="news">
+                            <img src="{% static 'img/Roblox.jpg' %}" alt="Roblox CEO David Baszucki">
+                            <div class="Ptails">
+                                <p>Roblox said third-quarter revenue climbed 91% to $242.2 million</p><br>
+                                <p>The company’s net loss more than doubled to $48 million.</p><br>
+                                <p>Roblox’s prospectus hit investors’ hands two months after gaming company Unity went public. Roblox is bigger and growing faster.</p>
+                            </div>
+                        </div>
+                        <h3>Among Us developer teases new map for next month</h3>
+                        <div class="news">
+                            <img src="{% static 'img/Among_Us.jpg' %}" alt="New Among Us Map Picture">
+                            <div class="Ptails">
+                                <p>Among Us developer InnerSloth has used the first post from a newly established Twitter account for the game to tease a new map. “Here’s a special look at the new Among Us map,” the developer tweeted, before hinting that more information would be revealed during The Game Awards on December 10th. Among Us is nominated for two awards at this year’s show, “Best Multiplayer,” and “Best Mobile Game.”</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footBox">
+        {% if User %}
+            <footer><marquee behavior="scroll" direction="left">(O <_ O) {{ User.name }} is Currently Logged In to XPLANET Welcome Human! (O _> O)</marquee></footer>
+        {% else %}
+            <footer><marquee behavior="scroll" direction="left">(O <_ O) ({{ No_user }}) Welcome to XPLANET Human! (O _> O)</marquee></footer>
+        {% endif %}
+    </div>
+</body>
+</html>

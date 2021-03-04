@@ -1,0 +1,280 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Body Box */
+#bodyBox{
+    /* background-color: rgb(18, 18, 94); */
+}
+
+
+
+/* Nav Box */
+#navBox{
+    background-image: linear-gradient(0deg, rgb(80, 80, 80), rgb(56, 56, 56), rgb(80, 80, 80));
+    /* background-color: rgb(28, 167, 40); */
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 2px solid gray;
+}
+nav{
+    width: 50%;
+    font-size: 20px;
+    padding-top: 40px;
+    margin-right: 5%;
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+nav ul li a{
+    text-decoration: none;
+}
+.li{
+    color: rgb(228, 230, 255);
+}
+
+
+.uibase{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Side Box */
+#sideBox{
+    background-image: linear-gradient(90deg, rgb(58, 58, 58), gray, rgb(58, 58, 58));
+    background-color: rgb(28, 167, 40);
+    width: 20%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+.following{
+    min-height: 200px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px 4px black;
+    background-color: rgb(172, 172, 172);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+.following ul{
+    list-style-type: none;
+}
+.followList{
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 15px;
+}
+.humanList{
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-left: 20px;
+}
+.followers{
+    min-height: 200px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px 4px black;
+    background-color: rgb(172, 172, 172);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+.followers ul{
+    list-style-type: none;
+}
+.folg{
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgb(212, 0, 255);
+    color: black;
+    font-weight: bolder;
+}
+.fol{
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgb(0, 102, 255);
+    color: black;
+    font-weight: bolder;
+}
+.nofol{
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgb(255, 0, 0);
+    color: black;
+    font-weight: bolder;
+}
+.fghead{
+    padding: 10px;
+    background-color: rgb(78, 69, 77);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 15px;
+    border-left: 4px solid rgb(255, 0, 255);
+}
+.frhead{
+    padding: 10px;
+    background-color: rgb(62, 73, 88);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 15px;
+    border-left: 4px solid rgb(0, 102, 255);
+}
+
+
+/* Content Box */
+#contentBox{
+    background-image: linear-gradient(40deg, rgb(58, 58, 58), gray, rgb(58, 58, 58));
+    background-color: rgb(28, 167, 40);
+    width: 70%;
+    margin-right: 1%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+
+.userfo{
+    min-height: 300px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 4px black;
+    background-color: rgb(172, 172, 172);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+.bio{
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 15px;
+    height: 200px;
+}
+
+
+.quicklinks{
+    width: 60%;
+}
+.quicklinks ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+.quicklinks ul li a{
+    /* text-decoration: none; */
+    color: rgb(0, 0, 134);
+}
+.uposts{
+    
+}
+#post{
+    min-height: 200px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 4px black;
+    background-color: rgb(172, 172, 172);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+#post h1{
+    margin-bottom: 20px;
+}
+
+#liked{
+    min-height: 200px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 4px black;
+    background-color: rgb(172, 172, 172);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+#liked h1{
+    margin-bottom: 20px;
+}
+
+#comments{
+    min-height: 200px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 4px black;
+    background-color: rgb(172, 172, 172);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+#comments h1{
+    margin-bottom: 20px;
+}
+.Ptails{
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 30px;
+    border-left: 4px solid rgb(0, 4, 211);
+}
+.Phead{
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 15px;
+    border-left: 4px solid rgb(0, 4, 211);
+}
+.Ctails{
+    min-height: 50px;
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 30px;
+    overflow: scroll;
+    border-left: 4px solid cyan;
+}
+.Chead{
+    padding: 10px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 0px 5px 1px black;
+    margin-bottom: 15px;
+    border-left: 4px solid cyan;
+}
+
+
+#footBox{
+    position: fixed;
+    bottom: 0px;
+    height: 20px;
+    background-color: rgb(66, 66, 66);
+    color: cyan;
+    width: 100%;
+}
+#sign{
+    padding: 10px;
+    width: 500px;
+    height: 25px;
+    margin-bottom: 20px;
+}
+.button {
+    margin-left: 745px;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: rgb(122, 122, 122);
+    background-color: rgb(212, 212, 212);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 6px 6px 1px rgb(77, 77, 77);
+}
+
+.button:hover {
+    background-color: blue;
+}
+
+.button:active {
+    color: darkblue;
+    background-color: cyan;
+    box-shadow: 0px 3px 3px 0px gray;
+    transform: translateY(4px);
+}
+#fpost{
+    padding: 10px;
+    width: 700px;
+}
