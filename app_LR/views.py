@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import User
 from app_X.models import Profile
 from django.contrib import messages
@@ -18,23 +18,20 @@ def register(request):
     request.session['reg'] = 1
     request.session['word'] = 'Registered'
     errors = User.objects.user_validation(request.POST)
-    if len(errors) > 0:
-        print(len(errors),'ERRORS!')
-        for key, val in errors.items():
-            print(key,val)
+    if errors:
+        for val in errors.values():
             messages.error(request, val)
         return redirect('/')
-    else:
-        print('No errors')
-        pw_hash = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
-        user = User.objects.create(
-            first_name=request.POST['fname'],
-            last_name=request.POST['lname'],
-            email=request.POST['email'],
-            password=pw_hash
-        )
-        profile = Profile.objects.create(user=user)
-        request.session['user'] = profile.id
+    
+    pw_hash = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
+    user = User.objects.create(
+        first_name=request.POST['fname'],
+        last_name=request.POST['lname'],
+        email=request.POST['email'],
+        password=pw_hash
+    )
+    profile = Profile.objects.create(user=user)
+    request.session['user'] = profile.id
     return redirect('/success')
 
 # Login Route
@@ -43,39 +40,38 @@ def login(request):
     request.session['log'] = 1
     request.session['word'] = 'Logged In'
     errors = User.objects.login_validation(request.POST)
-    if len(errors) > 0:
-        print(len(errors),'ERRORS!')
-        for key, val in errors.items():
-            print(key,val)
+    if errors:
+        for val in errors.values():
             messages.error(request, val)
         return redirect('/log')
-    else:
-        print('No errors')
-        user = User.objects.get(email=request.POST['email'])
-        profile = Profile.objects.get(user=user)
-        request.session['user'] = profile.id
+    
+    user = get_object_or_404(User, email=request.POST['email'])
+    profile = get_object_or_404(Profile, user=user)
+    request.session['user'] = profile.id
     return redirect('/xplanet/dashboard')
 
 # Registered/New Profile Name Route
 def success(request):
     if 'user' not in request.session:
         return redirect('/xplanet/no_user')
+    
+    user_profile = get_object_or_404(Profile, id=request.session['user'])
     context = {
-        'User': Profile.objects.get(id=request.session['user']),
+        'User': user_profile,
         'status': request.session['word']
     }
     return render(request, 'success.html', context)
 
 def ProName(request):
     errors = Profile.objects.valid_Name(request.POST)
-    if len(errors) > 0:
-        for key, val in errors.items():
+    if errors:
+        for val in errors.values():
             messages.error(request, val)
         return redirect('/success')
-    else:
-        profile = Profile.objects.get(id=request.session['user'])
-        profile.name=request.POST['proname']
-        profile.save()
+    
+    profile = get_object_or_404(Profile, id=request.session['user'])
+    profile.name = request.POST['proname']
+    profile.save()
     return redirect('/xplanet/dashboard')
 
 # Logout Route
